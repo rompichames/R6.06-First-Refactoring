@@ -26,11 +26,10 @@ class CoffretSeriesTvTest {
     @Test
     public void testCoffretSeriesTvHtml() {
         client.addLocation(new Location(new Film("Soda", 3), 5));
-        String obtenu = client.situationHTML(); //
+        String obtenu = client.situationHTML();
 
-        // Vérification (5j * 0.5 = 2.5euros), points (0)
-        assertTrue(obtenu.contains("<td>Soda</td><td>2.5 €</td>")); //
-        assertTrue(obtenu.contains("Total dû : <strong>2.5 €</strong>")); //
-        assertTrue(obtenu.contains("<strong>0</strong> points de fidélité")); //
+        assertTrue(obtenu.contains("<li>Soda : 2.5€</li>"));
+        assertTrue(obtenu.contains("Total dû : <b>2.5€</b>"));
+        assertTrue(obtenu.contains("Points gagnés : <b>0</b>"));
     }
 }

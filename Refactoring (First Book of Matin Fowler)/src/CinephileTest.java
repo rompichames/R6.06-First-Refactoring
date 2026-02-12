@@ -39,11 +39,11 @@ class CinephileTest {
     @Test
     public void testCinephileHtml() {
         client.addLocation(new Location(new Film("Age de glaçon", 4), 3));
-        String obtenu = client.situationHTML(); //
+        String obtenu = client.situationHTML();
 
         // Vérification (2euros + 2j * 4euros = 10euros)
-        assertTrue(obtenu.contains("<h1>Situation du client : <em>John Doe</em></h1>")); //
-        assertTrue(obtenu.contains("<td>Age de glaçon</td><td>10.0 €</td>")); //
-        assertTrue(obtenu.contains("<strong>0</strong> points de fidélité")); //
+        assertTrue(obtenu.contains("<li>Age de glaçon : 10.0€</li>"));
+        assertTrue(obtenu.contains("<b>10.0€</b>"));
+        assertTrue(obtenu.contains("Points gagnés : <b>0</b>"));
     }
 }
