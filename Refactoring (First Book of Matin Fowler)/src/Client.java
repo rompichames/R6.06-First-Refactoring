@@ -14,6 +14,8 @@ public class Client {
 	public void addLocation(Location location) {
 		this.locations.add(location);
 	}
+
+	public List<Location> getLocations() { return this.locations; }
 	
 	public String getNom() {
 		return this.nom;
@@ -36,28 +38,11 @@ public class Client {
 	}
 
 	public String situation() {
-		String result = "Situation du client: " + getNom() + "\n";
-
-		for (Location each : locations) {
-			result += "\t" + each.getFilm().getTitre() + "\t" + each.getMontant() + "\n";
-		}
-		// ajout recapitulatif client
-		result += "Total du " + getTotalDu() + "\n";
-		result += "Vous gagnez " + getPointsFideliteTotal() + " points de fidelite\n";
-
-		return result;
+		return new Statement.TextStatement().value(this);
 	}
 
 	public String situationHTML() {
-		String result = "<h1>Situation du client: " + getNom() + "</h1><ul>\n";
-
-		for (Location each : locations) {
-			result += "<li>" + each.getFilm().getTitre() + " : " + each.getMontant() + "€</li>\n";
-			result += "</ul><p>Total dû : <b>" + getTotalDu() + "€</b></p>\n";
-			result += "<p>Points gagnés : <b>" + getPointsFideliteTotal() + "</b></p>";
-		}
-
-		return result;
+		return new Statement.HtmlStatement().value(this);
 	}
 
 }
