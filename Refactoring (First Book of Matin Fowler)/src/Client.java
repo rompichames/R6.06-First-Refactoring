@@ -40,11 +40,11 @@ public class Client {
 
 		for (Location each : locations) {
 			result += "\t" + each.getFilm().getTitre() + "\t" + each.getMontant() + "\n";
-
-			// ajout recapitulatif client
-			result += "Total du " + getTotalDu() + "\n";
-			result += "Vous gagnez " + getPointsFideliteTotal() + " points de fidelite\n";
 		}
+		// ajout recapitulatif client
+		result += "Total du " + getTotalDu() + "\n";
+		result += "Vous gagnez " + getPointsFideliteTotal() + " points de fidelite\n";
+
 		return result;
 	}
 
