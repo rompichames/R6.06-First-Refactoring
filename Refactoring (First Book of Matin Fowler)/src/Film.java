@@ -25,5 +25,44 @@ public class Film {
 	public int getCodePrix() {
 		return this.codePrix;
 	}
-	
+
+	public double getMontant(int nbJours) {
+		double du = 0;
+		switch (getCodePrix()) {
+			case Film.NORMAL:
+				du += 2;
+				if (nbJours > 2)
+					du += (nbJours - 2) * 1.5;
+				break;
+			case Film.NOUVEAUTE:
+				du += nbJours * 3;
+				break;
+			case Film.ENFANT:
+				du += 1.5;
+				if (nbJours > 3)
+					du += (nbJours - 3) * 1.5;
+				break;
+			case Film.COFFRET_SERIES_TV:
+				du += nbJours * 0.5;
+				break;
+			case Film.CINEPHILE:
+				du += 2;
+				if (nbJours > 1)
+					du += (nbJours - 1) * 4;
+				break;
+		}
+		return du;
+	}
+
+	public int getPointsFidelite(int nbJours) {
+		int pointsFidelites = 0;
+
+		if (codePrix == Film.CINEPHILE) {
+			if (nbJours == 1) pointsFidelites += 3;
+		} else if (codePrix != Film.COFFRET_SERIES_TV) {
+			pointsFidelites++;
+			if (codePrix == Film.NOUVEAUTE && nbJours > 1) pointsFidelites++;
+		}
+		return pointsFidelites;
+	}
 }
